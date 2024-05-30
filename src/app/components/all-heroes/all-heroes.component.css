@@ -1,0 +1,12 @@
+div, p {
+  @apply flex justify-center
+}
+button {
+  @apply m-2 p-2 bg-blue-400 hover:bg-amber-600 text-white text-xl rounded-md font-medium
+}
+.heroes-list{
+  @apply flex flex-wrap gap-2
+}
+img{
+  @apply rounded-2xl
+}

@@ -1,0 +1,15 @@
+<p>Liste de Héros !</p>
+<div>
+  <button (click)="addHeroes()">Charger les héros</button>
+</div>
+<div class="heroes-list">
+  <a [routerLink]="['/hero', hero.id]" *ngFor="let hero of heroes">
+    <img [src]="hero.image" alt="{{ hero.name }}">
+  </a>
+
+<!--  @for (hero of heroes; track $index) {-->
+<!--    <a href="">-->
+<!--      <img [src]="hero.image" alt="{{ hero.name }}">-->
+<!--    </a>-->
+<!--  }-->
+</div>
