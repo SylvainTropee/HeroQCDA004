@@ -5,6 +5,7 @@ import {Hero} from "../../models/hero";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {Observable} from "rxjs";
 import {HttpClientModule} from "@angular/common/http";
+import {Biography} from "../../models/biography";
 
 @Component({
   selector: 'app-hero-detail',
@@ -14,13 +15,14 @@ import {HttpClientModule} from "@angular/common/http";
     AsyncPipe,
     HttpClientModule
   ],
-  providers : [HeroApiService],
+  providers: [HeroApiService],
   templateUrl: './hero-detail.component.html',
   styleUrl: './hero-detail.component.css'
 })
 export class HeroDetailComponent {
 
   public hero$: Observable<Hero> | undefined
+  public biography$: Observable<Biography> | undefined
 
   constructor(/*@Inject(ActivatedRoute)*/
               private route: ActivatedRoute,
@@ -30,6 +32,7 @@ export class HeroDetailComponent {
     const id = this.route.snapshot.params['id'];
     if (id) {
       this.hero$ = this.heroApi.getHeroById(id)
+      this.biography$ = this.heroApi.getHeroBiographyById(id)
     }
   }
 

@@ -2,7 +2,10 @@
   <img class="rounded-lg" [src]="hero.images.md" [alt]="hero.name">
   <div class="text-2xl text-white">
     <div class="font-bold text-center border border-white p-2 mb-2">{{ hero.name }}</div>
-    <div class="ml-6 text-center">{{ hero.biography.fullName }}</div>
+    <div *ngIf="biography$ | async as bio">
+      <div class="ml-6 text-center">{{ bio.fullName }}</div>
+      <div class="ml-6 text-center">{{ bio.aliases.join(" / ") }}</div>
+    </div>
     <ul class="list-disc list-inside">
       <li class="ml-6">Intelligence : {{ hero.powerstats.intelligence }}</li>
       <li class="ml-6">Force : {{ hero.powerstats.strength }}</li>
