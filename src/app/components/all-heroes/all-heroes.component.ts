@@ -15,7 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
     RouterLink,
     HttpClientModule
   ],
-  providers : [HeroApiService],
+  providers: [HeroApiService],
   templateUrl: './all-heroes.component.html',
   styleUrl: './all-heroes.component.css'
 })
@@ -23,6 +23,10 @@ export class AllHeroesComponent {
 
   public heroes: Hero[] //Array<Hero>
   //private heroApi: HeroApiService
+
+  ngOnInit() {
+    this.addHeroes()
+  }
 
   constructor(private heroApi: HeroApiService) {
     this.heroes = []

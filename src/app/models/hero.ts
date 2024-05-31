@@ -3,7 +3,9 @@ export interface Hero {
   id : number
   name : string
   images : {
-    sm : string
+    sm : string,
+    md : string,
+    lg : string,
   }
   powerstats : {
     intelligence : number,

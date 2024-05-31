@@ -1,4 +1,15 @@
-<div *ngIf="hero$ | async as hero" class="flex justify-center p-4">
-  <p>{{ hero.biography.fullName }}</p>
-  <img class="rounded-lg" [src]="hero.images.sm" [alt]="hero.name">
+<div *ngIf="hero$ | async as hero" class="grid grid-cols-2 items-center justify-items-center p-4 h-screen">
+  <img class="rounded-lg" [src]="hero.images.md" [alt]="hero.name">
+  <div class="text-2xl text-white">
+    <div class="font-bold text-center border border-white p-2 mb-2">{{ hero.name }}</div>
+    <div class="ml-6 text-center">{{ hero.biography.fullName }}</div>
+    <ul class="list-disc list-inside">
+      <li class="ml-6">Intelligence : {{ hero.powerstats.intelligence }}</li>
+      <li class="ml-6">Force : {{ hero.powerstats.strength }}</li>
+      <li class="ml-6">Vitesse : {{ hero.powerstats.speed }}</li>
+      <li class="ml-6">Puissance : {{ hero.powerstats.power }}</li>
+      <li class="ml-6">Combat : {{ hero.powerstats.combat }}</li>
+      <li class="ml-6">Endurance : {{ hero.powerstats.durability }}</li>
+    </ul>
+  </div>
 </div>
