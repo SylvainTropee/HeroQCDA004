@@ -1,3 +1,4 @@
-<div *ngIf="hero" class="flex justify-center p-4">
-  <img class="rounded-lg" [src]="hero.image" [alt]="hero.name">
+<div *ngIf="hero$ | async as hero" class="flex justify-center p-4">
+  <p>{{ hero.biography.fullName }}</p>
+  <img class="rounded-lg" [src]="hero.images.sm" [alt]="hero.name">
 </div>

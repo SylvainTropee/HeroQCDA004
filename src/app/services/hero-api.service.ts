@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Hero} from "../models/hero";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,32 +9,19 @@ import {Hero} from "../models/hero";
 export class HeroApiService {
 
   public heroes: Array<Hero> //Hero[]
+  private readonly BASE_URL: string
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.heroes = []
-    this.heroes.push({
-      id: 1,
-      name: "Hulk",
-      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/332-hulk.jpg"
-    })
-    this.heroes.push({
-      id: 2,
-      name: "Wonder Woman",
-      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/720-wonder-woman.jpg"
-    })
-    this.heroes.push({
-      id: 3,
-      name: "Batman",
-      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/70-batman.jpg"
-    })
+    this.BASE_URL = "https://akabab.github.io/superhero-api/api/"
   }
 
-  public getAllHeroes(): Hero[] {
-    return this.heroes
+  public getAllHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.BASE_URL + "all.json")
   }
 
-  public getHeroById(id: number) : Hero | undefined {
-    return this.heroes.find((h: Hero) => h.id == id)
+  public getHeroById(id: number): Observable<Hero> | undefined {
+    return this.http.get<Hero>(this.BASE_URL + `id/${id}.json`)
   }
 
 
