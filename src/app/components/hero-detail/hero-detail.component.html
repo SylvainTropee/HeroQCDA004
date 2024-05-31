@@ -1,1 +1,3 @@
-<p>Ici c'est le héro {{ id }}, infos au prochain épisode</p>
+<div *ngIf="hero" class="flex justify-center p-4">
+  <img class="rounded-lg" [src]="hero.image" [alt]="hero.name">
+</div>
